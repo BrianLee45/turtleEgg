@@ -1,0 +1,26 @@
+<fieldset>
+  <legend>Bucket List</legend>
+  <form (submit)='onSubmit(goal.value)' #goal='ngForm'>
+    <div class="form-group">
+      <input type="text" id="title" name='title' [ngModel]='goal.title'>
+      <input type="text" name="description" [ngModel]="goal.description">
+      <select name="user" [(ngModel)]='goal.user'>
+        <option [value]="user._id" *ngFor="let user of users">{{user.username}}</option>
+      </select>
+      <button type="submit" name="button">Add to List</button>
+    </div>
+  </form>
+</fieldset>
+
+<h4>
+  Before I Die I want to:
+</h4>
+<table class="table table-striped">
+  <tr [routerLink]="['/goal']" *ngFor="let goal of goals">
+    <td><input type="checkbox" value="{{goal.done}}"></td>
+    <td>{{goal.user.username}}</td>
+    <td>{{goal.title}} </td>
+    <td>{{goal.description}}</td>
+    <td>{{goal.createdAt | date: 'medium'}}</td>
+  </tr>
+</table>

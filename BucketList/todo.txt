@@ -1,0 +1,10 @@
+
+1.  Modify goals to include "createdBy"
+
+2.  Create "dashboard" so only goals created by logged user display
+
+3.  Create login function & session mechanism
+
+4.  server\controllers\login.js
+
+    expecting 'email', passing in 'name' -- make up your mind

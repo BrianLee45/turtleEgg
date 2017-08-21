@@ -12,6 +12,7 @@ export class LoginService {
   constructor(private http: Http, private cookieService: CookieService) {}
 
   login(user: User): Promise<User> {
+    console.log('login.service: login()')
     return this.http.post('/api/login', user)
       .map(response => response.json())
       .toPromise();

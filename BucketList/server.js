@@ -30,6 +30,7 @@ require('./server/config/database');
 
 app.use('/api/users', require('./server/config/routes/user.routes'));
 app.use('/api/goals', require('./server/config/routes/goal.routes'));
+app.use('/api/login', require('./server/config/routes/login.routes'));
 
 const otherRoutes = require('./server/config/routes/other.routes');
 app.use(otherRoutes);

@@ -49,8 +49,8 @@ const userSchema = new Schema( {
 //     .catch(next);
 // });
 
-// userSchema.statics.validatePassword = function(testPassword, hashedPassword) {
-//   return bcrypt.compare(testPassword, hashedPassword);
-// };
+userSchema.statics.checkPassword = function(testPassword, hashedPassword) {
+  return bcrypt.compare(testPassword, hashedPassword);
+};
 
 module.exports = mongoose.model('User', userSchema);

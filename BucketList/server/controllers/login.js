@@ -2,6 +2,7 @@ const User = require('mongoose').model('User');
 
 module.exports = {
   login(request, response) {
+    console.log(`controller.login: `);
     User.findOne({ email: request.body.email })
       .then(user => {
         if (!user) throw new Error();
@@ -34,5 +35,5 @@ function doLogin(request, response, user) {
   response.cookie('userID', user._id.toString());
   response.cookie('expiration', Date.now() + 80000 * 1000);
   response.json(user);
-  
+
 }

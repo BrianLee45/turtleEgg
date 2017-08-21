@@ -9,12 +9,16 @@ import { User } from '../user';
 
 @Injectable()
 export class LoginService {
-  constructor(private http: Http, private cookieService: CookieService) {}
+  constructor(private cookieService: CookieService, private http: Http) {}
 
   login(user: User): Promise<User> {
     console.log('login.service: login()')
     return this.http.post('/api/login', user)
       .map(response => response.json())
+      // .map(response => {
+      //   console.log(response);
+      //   response = response.json();
+      // })
       .toPromise();
   }
 

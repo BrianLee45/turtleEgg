@@ -5,6 +5,7 @@ module.exports = {
     console.log(`controller.login: `);
     User.findOne({ email: request.body.email })
       .then(user => {
+        console.log('here');
         if (!user) throw new Error();
 
         return User.checkPassword(request.body.password, user.password)

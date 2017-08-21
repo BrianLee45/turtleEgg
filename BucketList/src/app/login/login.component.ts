@@ -16,10 +16,13 @@ export class LoginComponent {
   constructor(private login: LoginService, private router: Router) { }
 
   onSubmit(user: User) {
+
     console.log('logging in', user);
     this.login.login(user)
       .then(() => this.router.navigate(['goal']))
+      .then(console.log)
       .catch(response => this.errorHandler(response.json()))
+      // .catch(response => this.errorHandler(response))
   }
 
   private errorHandler(errors: string[] | Error) {

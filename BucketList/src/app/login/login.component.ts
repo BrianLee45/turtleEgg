@@ -20,12 +20,15 @@ export class LoginComponent {
     console.log('logging in', user);
     this.login.login(user)
       .then(() => this.router.navigate(['goal']))
-      .then(console.log)
-      .catch(response => this.errorHandler(response.json()))
+      .catch(response => {
+        console.log(response);
+        this.errorHandler(response.json())
+      })
       // .catch(response => this.errorHandler(response))
   }
 
   private errorHandler(errors: string[] | Error) {
+    console.log(errors);
     this.loginErrors = Array.isArray(errors) ? errors : [errors.message];
   }
 

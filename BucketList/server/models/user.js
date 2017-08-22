@@ -38,16 +38,16 @@ const userSchema = new Schema( {
   timestamps: true
 });
 
-// userSchema.pre('save', function(next) {
-//   if (!this.isModified('password')) { return next(); }
-//
-//   bcrypt.hash(this.password, 10)
-//     .then(hashedPassword => {
-//       this.password = hashedPassword;
-//       next();
-//     })
-//     .catch(next);
-// });
+userSchema.pre('save', function(next) {
+  if (!this.isModified('password')) { return next(); }
+
+  bcrypt.hash(this.password, 10)
+    .then(hashedPassword => {
+      this.password = hashedPassword;
+      next();
+    })
+    .catch(next);
+});
 
 userSchema.statics.checkPassword = function(testPassword, hashedPassword) {
   return bcrypt.compare(testPassword, hashedPassword);

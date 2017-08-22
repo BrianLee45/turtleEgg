@@ -2,7 +2,7 @@ const User = require('mongoose').model('User');
 
 module.exports = {
   login(request, response) {
-    console.log(`controller.login: `);
+    console.log(`controller.login: ${request.body.email}`);
     User.findOne({ email: request.body.email })
       .then(user => {
         console.log('here');

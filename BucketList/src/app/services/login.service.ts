@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Response } from '@angular/http';
 import { CookieService } from 'ngx-cookie';
 
 import 'rxjs/add/operator/map';
@@ -12,13 +12,10 @@ export class LoginService {
   constructor(private cookieService: CookieService, private http: Http) {}
 
   login(user: User): Promise<User> {
-    console.log('login.service: login()')
+    console.log(`login.service: ${user.email}`);
     return this.http.post('/api/login', user)
-      .map(response => response.json())
-      // .map(response => {
-      //   console.log(response);
-      //   response = response.json();
-      // })
+      // .map(response => response.json())
+      .map((response: Response) => response.json())
       .toPromise();
   }
 

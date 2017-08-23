@@ -1,0 +1,21 @@
+
+App to manage players/teams for 3 games
+  (exercise on multiple relationships)
+
+Models:
+
+  Team
+    name: string
+    player: Obj
+    game
+
+  Player
+    name: string
+    position: string
+    status: string ['playing', 'not playing', 'undecided']
+
+
+  Game
+    gameNo: number
+    player: obj<>
+    

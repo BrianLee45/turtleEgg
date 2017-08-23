@@ -4,18 +4,17 @@ App to manage players/teams for 3 games
 
 Models:
 
-  Team
-    name: string
-    player: Obj
-    game
 
   Player
     name: string
     position: string
-    status: string ['playing', 'not playing', 'undecided']
 
 
   Game
-    gameNo: number
-    player: obj<>
-    
+    gameId: number
+    players: [{
+      obj<>,
+      status: string
+    }]
+
+1.  Start build out of front end

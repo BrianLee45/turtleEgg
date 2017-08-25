@@ -50,6 +50,7 @@ userSchema.pre('save', function(next) {
   //   .catch(next);
   bcrypt.hash(this.password, 10,
     hashedPassword => {
+      console.log(this.password);
     this.password = hashedPassword;
     next();
   },
@@ -61,7 +62,7 @@ userSchema.pre('save', function(next) {
 userSchema.statics.checkPassword = function(testPassword, hashedPassword) {
   console.log(`testPassword: ${testPassword}, hashedPassword: ${hashedPassword}`);
   const myResult = bcrypt.compare(testPassword, hashedPassword);
-  console.log(myResult);
+  console.log(`checkPassword: ${myResult}`);
   // return bcrypt.compare(testPassword, hashedPassword);
   return myResult;
 };

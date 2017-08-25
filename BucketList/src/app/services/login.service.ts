@@ -13,7 +13,7 @@ export class LoginService {
 
   login(user: User): Promise<User> {
     console.log(`login.service: ${user.email}`);
-    return this.http.post('/api/login', user)
+    return this.http.post('/api/login/login', user)
       // .map(response => response.json())
       .map((response: Response) => response.json())
       .toPromise();

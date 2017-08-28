@@ -48,16 +48,24 @@ userSchema.pre('save', function(next) {
   //     next();
   //   })
   //   .catch(next);
-  bcrypt.hash(this.password, 10,
-    hashedPassword => {
+  bcrypt.genSalt(10, (err, salt) => {
+    if (err) {
+      return next(err);
+    }
+    bcrypt.hash(this.password, null, null, (error, hashedPassword) => {
+      if (error) {
+        console.log(`error: wat? ${error}`);
+        return next(error);
+      }
       console.log(this.password);
-    this.password = hashedPassword;
-    next();
-  },
-  returnVal => {next}
-);
-
+      this.password = hashedPassword;
+      console.log('next', this.password);
+      next();
+    });
+  });
 });
+
+// });
 
 userSchema.statics.checkPassword = function(testPassword, hashedPassword) {
   console.log(`testPassword: ${testPassword}, hashedPassword: ${hashedPassword}`);

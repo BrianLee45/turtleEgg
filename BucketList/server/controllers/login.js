@@ -9,13 +9,21 @@ module.exports = {
 
         console.log('there', user);
 
-        return User.checkPassword(request.body.password, user.password)
-          .then(() => {
+        // return User.checkPassword(request.body.password, user.password)
+        if (User.checkPassword(request.body.password, user.password)) {
+            console.log(`checkPassword: true`);
             doLogin(request, response, user);
-          });
+        } else {
+          throw new Error();
+        }
+          // .then(() => {
+          // .then(gimme => {
+          //   console.log(`inside then: ${ gimme }`);
+          //   doLogin(request, response, user);
+          // });
       })
       .catch(error => {
-        response.status(401).json('Login failed');
+        response.status(401).json(`Login failed ${ error }`);
       })
   },
 
@@ -30,6 +38,7 @@ module.exports = {
 };
 
 function doLogin(request, response, user) {
+  console.log(`doLogin: ${ user }`);
   request.session.user = user.toObject();
 
   delete request.session.user.password;

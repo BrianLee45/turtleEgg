@@ -20,11 +20,11 @@ export class LoginComponent {
     console.log('logging in', user);
     this.login.login(user)
       .then(() => this.router.navigate(['goal']))
-      .catch(response => {
-        console.log(response);
-        this.errorHandler(response.json())
-      })
-      // .catch(response => this.errorHandler(response))
+      // .catch(response => {
+      //   console.log(response);
+      //   this.errorHandler(response.json())
+      // })
+      .catch(response => this.errorHandler(response))
   }
 
   private errorHandler(errors: string[] | Error) {

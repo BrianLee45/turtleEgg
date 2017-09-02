@@ -36,7 +36,7 @@ const routes: Routes = [
 
   {
     path: '',
-    redirectTo: 'goal',
+    redirectTo: 'user',
     pathMatch: 'full'
   }
 ];

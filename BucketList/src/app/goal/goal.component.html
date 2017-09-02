@@ -24,3 +24,8 @@
     <td>{{goal.createdAt | date: 'medium'}}</td>
   </tr>
 </table>
+
+<h4>List of Other Users:</h4>
+<ul>
+  <li *ngFor="let user of users"><a href="#">{{user.username}}</a></li>
+</ul>

@@ -14,7 +14,15 @@ const goalSchema = new Schema( {
     trim: true
   },
 
-  user: {
+  users: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'User'
+    }
+
+  ],
+
+  createdBy: {
     type: Schema.Types.ObjectId,
     ref: 'User'
   },

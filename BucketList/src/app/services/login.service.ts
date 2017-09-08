@@ -32,4 +32,8 @@ export class LoginService {
 
     return Boolean(session && expired && userID && expired > Date.now());
   }
+
+  getId(): string {
+    return this.cookieService.get('userID');
+  }
 }

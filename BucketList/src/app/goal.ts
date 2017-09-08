@@ -4,7 +4,8 @@ export class Goal {
   _id: string;
   title: string;
   description: string;
-  user: User[];
+  users: User[];
+  createdBy: User;
   done: boolean;
   createdAt: Date;
 }

@@ -6,7 +6,8 @@ class GoalsController {
     console.log('Getting goals...');
 
     Goal.find({})
-      .populate('user')
+      .populate('users')
+      .populate('createdBy')
       .then(goals => {response.json(goals)})
       .catch(error => {response.status(422).json(error.message)});
   }
